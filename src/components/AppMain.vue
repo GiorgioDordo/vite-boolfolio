@@ -35,8 +35,8 @@ export default {
         <div class="col-3 m-3 p-3 card" v-for="singleProject in projectList" :key="singleProject.id">
             <div class="card-body">
                 <p><strong>{{ singleProject.name }}</strong></p>
-                <p>{{  }}</p>
-                <p></p>
+                <p>{{ singleProject.short_description }}</p>
+                <p>{{ singleProject.type.name }}</p>
             </div>
         </div>
     </div>
