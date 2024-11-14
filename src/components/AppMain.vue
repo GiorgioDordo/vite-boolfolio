@@ -6,19 +6,19 @@ import axios from 'axios';
 export default {
   data() {
     return{
-
+      projectList: [],
     }
   },
   methods: {
     getProjects() {
       axios.get('http://127.0.0.1:8000/api/projects')
-      .then(function(response) {
+      .then((response) => {
         console.log(response.data.results);
+        this.projectList = response.data.results;
       })
       .catch(function(error){
         console.log(error);
       }) 
-      this.postList = response.data.results;
     }
   },
   created() {
@@ -32,10 +32,10 @@ export default {
 <main class="container">
     <div class="row d-flex justify-content-center">
         <div><h1 class="text-center">PROJECTS</h1></div>
-        <div class="col-3 m-3 p-3 card">
+        <div class="col-3 m-3 p-3 card" v-for="singleProject in projectList" :key="singleProject.id">
             <div class="card-body">
-                <p><strong></strong></p>
-                <p></p>
+                <p><strong>{{ singleProject.name }}</strong></p>
+                <p>{{  }}</p>
                 <p></p>
             </div>
         </div>
